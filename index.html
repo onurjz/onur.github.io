@@ -12,12 +12,12 @@
       font-family:Arial,sans-serif;
       min-height:100vh;
       text-align:center;
-      padding:10px 8px;
+      padding:15px 10px;
       overflow-x:hidden;
     }
     h1 {
       font-size:1.6rem;
-      margin:15px 0 25px;
+      margin:20px 0 30px;
       line-height:1.1;
       white-space:nowrap;
       overflow:hidden;
@@ -27,17 +27,33 @@
       z-index:10;
     }
     .gallery {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:12px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .photo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.12);
+      transition: all 0.4s ease;
+    }
+    .photo:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(255,255,255,0.25);
     }
     img {
-      width:100%;
-      max-width:400px;
-      height:auto;
-      object-fit:cover;
-      border-radius:12px;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: transform 0.4s ease;
+    }
+    .photo:hover img {
+      transform: scale(1.08);
     }
     .heart {
       position:fixed;
@@ -50,18 +66,22 @@
       z-index:0;
     }
     @keyframes fall { to { transform:translateY(110vh); } }
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+      h1 { font-size:1.5rem; }
+    }
   </style>
 </head>
 <body>
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
   <div class="gallery">
-    <img src="senveben3.jpeg" alt="3">
-    <img src="senveben2.jpeg" alt="2">
-    <img src="senveben1.jpeg" alt="1">
-    <img src="senveben4.jpeg" alt="4">
-    <img src="senveben5.jpeg" alt="5">
-    <img src="senveben6.jpeg" alt="6">
+    <div class="photo"><img src="senveben3.jpeg" alt="3"></div>
+    <div class="photo"><img src="senveben2.jpeg" alt="2"></div>
+    <div class="photo"><img src="senveben1.jpeg" alt="1"></div>
+    <div class="photo"><img src="senveben4.jpeg" alt="4"></div>
+    <div class="photo"><img src="senveben5.jpeg" alt="5"></div>
+    <div class="photo"><img src="senveben6.jpeg" alt="6"></div>
   </div>
 
   <script>
