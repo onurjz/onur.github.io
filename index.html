@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seni Çok Seviyorum</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000000;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 50px;
+      padding: 20px;
+      z-index: 10;
+    }
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 30px;
+      color: #ffffff;
+      opacity: 0.9;
+      animation: fall 5s linear forwards;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
+
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "🤍";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
