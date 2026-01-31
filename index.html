@@ -2,57 +2,62 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Seni Çok Seviyorum</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
       background: #000000;
-      font-family: Arial, sans-serif;
       color: white;
-      overflow-x: hidden;
+      font-family: Arial, sans-serif;
       min-height: 100vh;
       text-align: center;
-      padding: 10px 15px; /* mobil için kenar boşluğu */
+      padding: 15px;
+      overflow-x: hidden;
     }
     h1 {
-      font-size: 2.5rem; /* mobil için küçült (eskiden 50px çok büyük) */
-      margin: 20px 0 30px;
-      line-height: 1.2; /* satır aralığı artır, taşma önle */
-      white-space: normal; /* emoji ve yazı sarılsın */
-      word-wrap: break-word; /* uzun kelime taşmasın */
+      font-size: 2.4rem;
+      margin: 25px 0 35px;
+      line-height: 1.15;
+      white-space: nowrap; /* tek satır zorla */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
       z-index: 10;
     }
     .gallery {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px; /* fotoğraflar arası boşluk */
+      gap: 18px;
     }
     img {
-      width: 100%; /* tam genişlikte olsun */
-      max-width: 500px; /* çok büyük olmasın */
-      height: auto; /* oran bozulmasın */
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+      width: 100%;
+      max-width: 420px; /* tüm fotoğraflar bu maks genişlikte eşitlenir */
+      height: auto;
+      aspect-ratio: 3 / 4; /* istersen değiştir: 1/1 kare, 4/3 yatay vs. */
+      object-fit: cover; /* fotoğraflar aynı boyutta kesilir/doldurulur */
+      border-radius: 14px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.15);
       display: block;
     }
     .heart {
       position: fixed;
-      top: -10px;
-      font-size: 30px;
+      top: -40px;
+      font-size: 28px;
       color: #ffffff;
-      opacity: 0.9;
-      animation: fall 5s linear forwards;
+      opacity: 0.85;
+      animation: fall linear forwards;
       pointer-events: none;
       z-index: 0;
+      white-space: nowrap;
     }
     @keyframes fall {
-      to { transform: translateY(100vh); }
+      to { transform: translateY(120vh); }
     }
-    @media (min-width: 768px) { /* masaüstü için biraz büyüt */
-      h1 { font-size: 4rem; }
-      img { max-width: 600px; }
+    @media (min-width: 500px) {
+      h1 { font-size: 3.2rem; }
+      img { max-width: 500px; }
     }
   </style>
 </head>
@@ -60,12 +65,12 @@
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
   <div class="gallery">
-    <img src="senveben1.jpeg" alt="Sen ve Ben 1">
-    <img src="senveben2.jpeg" alt="Sen ve Ben 2">
-    <img src="senveben3.jpeg" alt="Sen ve Ben 3">
-    <img src="senveben4.jpeg" alt="Sen ve Ben 4">
-    <img src="senveben5.jpeg" alt="Sen ve Ben 5">
-    <img src="senveben6.jpeg" alt="Sen ve Ben 6">
+    <img src="senveben1.jpeg" alt="1">
+    <img src="senveben2.jpeg" alt="2">
+    <img src="senveben3.jpeg" alt="3">
+    <img src="senveben4.jpeg" alt="4">
+    <img src="senveben5.jpeg" alt="5">
+    <img src="senveben6.jpeg" alt="6">
   </div>
 
   <script>
@@ -74,11 +79,11 @@
       heart.classList.add("heart");
       heart.innerHTML = "🤍";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 5000);
+      setTimeout(() => heart.remove(), 8000);
     }
-    setInterval(createHeart, 300);
+    setInterval(createHeart, 400);
   </script>
 </body>
 </html>
