@@ -2,61 +2,58 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seni Çok Seviyorum</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background:#000;
-      color:#fff;
-      font-family:Arial,sans-serif;
-      min-height:100vh;
-      text-align:center;
-      padding:15px 10px;
-      overflow-x:hidden;
+      margin: 0;
+      background: #000000;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
     h1 {
-      font-size:1.6rem;
-      margin:20px 0 30px;
-      line-height:1.1;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:100%;
-      z-index:10;
+      font-size: 2rem;
+      margin: 30px 0 40px;
+      z-index: 10;
     }
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      max-width: 500px;
       margin: 0 auto;
     }
-    img {
-      width: 100%;
+    .photo {
+      width: 90%;
+      max-width: 400px;
       height: auto;
-      display: block;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease-out;
     }
-    img:hover {
-      transform: scale(1.05);
+    .photo.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .heart {
-      position:fixed;
-      top:-50px;
-      font-size:24px;
-      color:#fff;
-      opacity:0.8;
-      animation:fall 6s linear forwards;
-      pointer-events:none;
-      z-index:0;
+      position: fixed;
+      top: -10px;
+      font-size: 28px;
+      color: white;
+      opacity: 0.85;
+      animation: fall 5s linear forwards;
+      pointer-events: none;
+      z-index: 0;
     }
-    @keyframes fall { to { transform:translateY(110vh); } }
-    @media (max-width: 500px) {
-      .gallery { grid-template-columns: 1fr; }
-      img { border-radius: 12px; }
+    @keyframes fall {
+      to { transform: translateY(100vh); }
     }
   </style>
 </head>
@@ -64,25 +61,41 @@
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
   <div class="gallery">
-    <img src="senveben3.jpeg" alt="3">
-    <img src="senveben2.jpeg" alt="2">
-    <img src="senveben1.jpeg" alt="1">
-    <img src="senveben4.jpeg" alt="4">
-    <img src="senveben5.jpeg" alt="5">
-    <img src="senveben6.jpeg" alt="6">
+    <img class="photo" src="senveben3.jpeg" alt="Foto 3">
+    <img class="photo" src="senveben2.jpeg" alt="Foto 2">
+    <img class="photo" src="senveben1.jpeg" alt="Foto 1">
+    <img class="photo" src="senveben4.jpeg" alt="Foto 4">
+    <img class="photo" src="senveben5.jpeg" alt="Foto 5">
+    <img class="photo" src="senveben6.jpeg" alt="Foto 6">
   </div>
 
   <script>
+    // Kalp yağmuru
     function createHeart() {
-      let heart = document.createElement("div");
-      heart.className = "heart";
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
       heart.innerHTML = "🤍";
-      heart.style.left = Math.random()*100 + "vw";
-      heart.style.animationDuration = (Math.random()*3 + 4) + "s";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
       document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(), 7000);
+      setTimeout(() => heart.remove(), 5000);
     }
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 400);
+
+    // Fotoğraflar sırayla gelsin
+    const photos = document.querySelectorAll('.photo');
+    let index = 0;
+
+    function showNextPhoto() {
+      if (index < photos.length) {
+        photos[index].classList.add('visible');
+        index++;
+        setTimeout(showNextPhoto, 800); // her 0.8 saniyede bir fotoğraf gelsin (istediğin hızı değiştir)
+      }
+    }
+
+    // Sayfa yüklendikten 1 saniye sonra başlasın
+    setTimeout(showNextPhoto, 1000);
   </script>
 </body>
 </html>
