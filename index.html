@@ -11,17 +11,21 @@
       font-family: Arial, sans-serif;
       color: white;
       overflow-x: hidden;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
     h1 {
       font-size: 50px;
-      padding: 20px;
+      margin: 30px 0;
       z-index: 10;
+    }
+    img {
+      max-width: 90%;
+      border-radius: 15px;
+      margin: 15px auto;
+      display: block;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
     .heart {
       position: fixed;
@@ -34,14 +38,19 @@
       z-index: 0;
     }
     @keyframes fall {
-      to {
-        transform: translateY(100vh);
-      }
+      to { transform: translateY(100vh); }
     }
   </style>
 </head>
 <body>
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
+
+  <img src="senveben1.jpeg" alt="Sen ve Ben 1">
+  <img src="senveben2.jpeg" alt="Sen ve Ben 2">
+  <img src="senveben3.jpeg" alt="Sen ve Ben 3">
+  <img src="senveben4.jpeg" alt="Sen ve Ben 4">
+  <img src="senveben5.jpeg" alt="Sen ve Ben 5">
+  <img src="senveben6.jpeg" alt="Sen ve Ben 6">
 
   <script>
     function createHeart() {
