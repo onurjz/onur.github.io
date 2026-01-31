@@ -2,70 +2,49 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Seni Çok Seviyorum</title>
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background:#000;
-      color:#fff;
-      font-family:Arial,sans-serif;
-      min-height:100vh;
-      text-align:center;
-      padding:15px 10px;
-      overflow-x:hidden;
+      margin: 0;
+      background: #000000;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
     h1 {
-      font-size:1.6rem;
-      margin:20px 0 30px;
-      line-height:1.1;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:100%;
-      z-index:10;
+      font-size: 2rem;
+      margin: 30px 0;
+      z-index: 10;
     }
     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      max-width: 800px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
     }
     img {
-      width: 100%;
+      width: 90%;
+      max-width: 400px;
       height: auto;
-      display: block;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease;
-    }
-    img:hover {
-      transform: scale(1.05);
-    }
-    /* 1. ve 3. sıradaki fotoğrafları küçült (senveben3 ve senveben1) */
-    .gallery img:nth-child(1),
-    .gallery img:nth-child(3) {
-      max-width: 260px;    /* daha ufak */
-      align-self: center;
-    }
-    .gallery img {
-      max-width: 380px;      /* diğerleri biraz daha büyük */
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
     }
     .heart {
-      position:fixed;
-      top:-50px;
-      font-size:24px;
-      color:#fff;
-      opacity:0.8;
-      animation:fall 6s linear forwards;
-      pointer-events:none;
-      z-index:0;
+      position: fixed;
+      top: -10px;
+      font-size: 30px;
+      color: white;
+      opacity: 0.9;
+      animation: fall 5s linear forwards;
+      pointer-events: none;
+      z-index: 0;
     }
-    @keyframes fall { to { transform:translateY(110vh); } }
-    @media (max-width: 500px) {
-      .gallery { grid-template-columns: 1fr; }
-      img { max-width: 90%; } /* telefonda hepsi benzer olsun */
+    @keyframes fall {
+      to { transform: translateY(100vh); }
     }
   </style>
 </head>
@@ -73,25 +52,25 @@
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
   <div class="gallery">
-    <img src="senveben3.jpeg" alt="3">   <!-- 1. sıra → küçült -->
-    <img src="senveben2.jpeg" alt="2">
-    <img src="senveben1.jpeg" alt="1">   <!-- 3. sıra → küçült -->
-    <img src="senveben4.jpeg" alt="4">
-    <img src="senveben5.jpeg" alt="5">
-    <img src="senveben6.jpeg" alt="6">
+    <img src="senveben3.jpeg" alt="Foto 3">
+    <img src="senveben2.jpeg" alt="Foto 2">
+    <img src="senveben1.jpeg" alt="Foto 1">
+    <img src="senveben4.jpeg" alt="Foto 4">
+    <img src="senveben5.jpeg" alt="Foto 5">
+    <img src="senveben6.jpeg" alt="Foto 6">
   </div>
 
   <script>
     function createHeart() {
-      let heart = document.createElement("div");
-      heart.className = "heart";
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
       heart.innerHTML = "🤍";
-      heart.style.left = Math.random()*100 + "vw";
-      heart.style.animationDuration = (Math.random()*3 + 4) + "s";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
       document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(), 7000);
+      setTimeout(() => heart.remove(), 5000);
     }
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 300);
   </script>
 </body>
 </html>
