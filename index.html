@@ -23,6 +23,7 @@
       overflow:hidden;
       text-overflow:ellipsis;
       max-width:100%;
+      letter-spacing:0;
       z-index:10;
     }
     .gallery {
@@ -51,14 +52,6 @@
       border-radius: 16px;
       transition: transform 0.4s ease;
     }
-    /* Küçük boyutlu fotoğraflar: 1,2,5,6 */
-    .small img {
-      max-width: 280px; /* daha ufak */
-    }
-    /* Büyük boyutlu fotoğraflar: 3,4 */
-    .large img {
-      max-width: 420px; /* daha büyük */
-    }
     .photo:hover img {
       transform: scale(1.08);
     }
@@ -75,7 +68,7 @@
     @keyframes fall { to { transform:translateY(110vh); } }
     @media (max-width: 600px) {
       .gallery { grid-template-columns: 1fr; }
-      .small img, .large img { max-width: 90%; } /* telefonda hepsi benzer olsun */
+      h1 { font-size:1.5rem; }
     }
   </style>
 </head>
@@ -83,12 +76,12 @@
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
   <div class="gallery">
-    <div class="photo small"><img src="senveben3.jpeg" alt="3"></div>
-    <div class="photo small"><img src="senveben2.jpeg" alt="2"></div>
-    <div class="photo large"><img src="senveben1.jpeg" alt="1"></div>
-    <div class="photo large"><img src="senveben4.jpeg" alt="4"></div>
-    <div class="photo small"><img src="senveben5.jpeg" alt="5"></div>
-    <div class="photo small"><img src="senveben6.jpeg" alt="6"></div>
+    <div class="photo"><img src="senveben3.jpeg" alt="3"></div>
+    <div class="photo"><img src="senveben2.jpeg" alt="2"></div>
+    <div class="photo"><img src="senveben1.jpeg" alt="1"></div>
+    <div class="photo"><img src="senveben4.jpeg" alt="4"></div>
+    <div class="photo"><img src="senveben5.jpeg" alt="5"></div>
+    <div class="photo"><img src="senveben6.jpeg" alt="6"></div>
   </div>
 
   <script>
