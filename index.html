@@ -5,60 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Seni Çok Seviyorum</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background: #000000;
-      color: white;
-      font-family: Arial, sans-serif;
-      min-height: 100vh;
-      text-align: center;
-      padding: 10px 12px;
-      overflow-x: hidden;
+      background:#000;
+      color:#fff;
+      font-family:Arial,sans-serif;
+      min-height:100vh;
+      text-align:center;
+      padding:10px 8px;
+      overflow-x:hidden;
     }
     h1 {
-      font-size: 2rem; /* mobil için ~32px, sığsın */
-      margin: 20px 0 30px;
-      line-height: 1.1;
-      white-space: nowrap; /* tek satır zorla */
-      overflow: hidden;
-      text-overflow: ellipsis; /* taşarsa ... koy */
-      max-width: 100vw; /* ekran genişliğine zorla sığ */
-      padding: 0 10px; /* kenarlardan biraz boşluk */
-      z-index: 10;
+      font-size:1.9rem; /* ~30px – telefonlarda sığar */
+      margin:15px 0 25px;
+      line-height:1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      max-width:100%;
+      letter-spacing:-0.5px; /* biraz sıkıştır */
+      z-index:10;
     }
     .gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
     }
     img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 14px;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+      width:100%;
+      max-width:400px;
+      height:auto;
+      object-fit:cover;
+      border-radius:12px;
     }
     .heart {
-      position: fixed;
-      top: -40px;
-      font-size: 28px;
-      color: #ffffff;
-      opacity: 0.85;
-      animation: fall linear forwards;
-      pointer-events: none;
-      z-index: 0;
-      white-space: nowrap;
+      position:fixed;
+      top:-50px;
+      font-size:24px;
+      color:#fff;
+      opacity:0.8;
+      animation:fall 6s linear forwards;
+      pointer-events:none;
+      z-index:0;
     }
-    @keyframes fall {
-      to { transform: translateY(120vh); }
-    }
-    @media (min-width: 500px) {
-      h1 { font-size: 3.2rem; white-space: normal; overflow: visible; text-overflow: clip; } /* masaüstünde normal olsun */
-      img { max-width: 500px; }
-    }
+    @keyframes fall { to { transform:translateY(110vh); } }
   </style>
 </head>
 <body>
@@ -75,15 +66,15 @@
 
   <script>
     function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
+      let heart = document.createElement("div");
+      heart.className = "heart";
       heart.innerHTML = "🤍";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+      heart.style.left = Math.random()*100 + "vw";
+      heart.style.animationDuration = (Math.random()*3 + 4) + "s";
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 8000);
+      setTimeout(()=>heart.remove(), 7000);
     }
-    setInterval(createHeart, 400);
+    setInterval(createHeart, 500);
   </script>
 </body>
 </html>
