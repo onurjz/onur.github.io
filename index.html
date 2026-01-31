@@ -1,100 +1,36 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Seni Çok Seviyorum</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      background:#000;
-      color:#fff;
-      font-family:Arial,sans-serif;
-      min-height:100vh;
-      text-align:center;
-      padding:15px 10px;
-      overflow-x:hidden;
-    }
-    h1 {
-      font-size:1.6rem;
-      margin:20px 0 30px;
-      line-height:1.1;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      max-width:100%;
-      letter-spacing:0;
-      z-index:10;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .photo {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(255,255,255,0.12);
-      transition: all 0.4s ease;
-    }
-    .photo:hover {
-      transform: scale(1.06);
-      box-shadow: 0 12px 30px rgba(255,255,255,0.25);
-    }
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
-      border-radius: 16px;
-      transition: transform 0.4s ease;
-    }
-    .photo:hover img {
-      transform: scale(1.08);
-    }
-    .heart {
-      position:fixed;
-      top:-50px;
-      font-size:24px;
-      color:#fff;
-      opacity:0.8;
-      animation:fall 6s linear forwards;
-      pointer-events:none;
-      z-index:0;
-    }
-    @keyframes fall { to { transform:translateY(110vh); } }
-    @media (max-width: 600px) {
-      .gallery { grid-template-columns: 1fr; }
-      h1 { font-size:1.5rem; }
-    }
-  </style>
-</head>
-<body>
-  <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
+.heart {
+  position: fixed;
+  top: -60px;
+  font-size: 20px; /* başlangıç boyutu */
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transform: translateX(-50%);
+  animation: fall var(--duration) linear forwards;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.7); /* hafif pembe glow */
+}
 
-  <div class="gallery">
-    <div class="photo"><img src="senveben3.jpeg" alt="3"></div>
-    <div class="photo"><img src="senveben2.jpeg" alt="2"></div>
-    <div class="photo"><img src="senveben1.jpeg" alt="1"></div>
-    <div class="photo"><img src="senveben4.jpeg" alt="4"></div>
-    <div class="photo"><img src="senveben5.jpeg" alt="5"></div>
-    <div class="photo"><img src="senveben6.jpeg" alt="6"></div>
-  </div>
+.heart::before {
+  content: "🤍";
+  display: block;
+  animation: rotate 8s linear infinite;
+}
 
-  <script>
-    function createHeart() {
-      let heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "🤍";
-      heart.style.left = Math.random()*100 + "vw";
-      heart.style.animationDuration = (Math.random()*3 + 4) + "s";
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(), 7000);
-    }
-    setInterval(createHeart, 500);
-  </script>
-</body>
-</html>
+@keyframes fall {
+  0% {
+    transform: translateY(-60px) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(120vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
