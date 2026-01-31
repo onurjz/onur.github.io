@@ -13,19 +13,29 @@
       overflow-x: hidden;
       min-height: 100vh;
       text-align: center;
-      padding: 20px;
+      padding: 10px 15px; /* mobil için kenar boşluğu */
     }
     h1 {
-      font-size: 50px;
-      margin: 30px 0;
+      font-size: 2.5rem; /* mobil için küçült (eskiden 50px çok büyük) */
+      margin: 20px 0 30px;
+      line-height: 1.2; /* satır aralığı artır, taşma önle */
+      white-space: normal; /* emoji ve yazı sarılsın */
+      word-wrap: break-word; /* uzun kelime taşmasın */
       z-index: 10;
     }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* fotoğraflar arası boşluk */
+    }
     img {
-      max-width: 90%;
+      width: 100%; /* tam genişlikte olsun */
+      max-width: 500px; /* çok büyük olmasın */
+      height: auto; /* oran bozulmasın */
       border-radius: 15px;
-      margin: 15px auto;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
       display: block;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
     .heart {
       position: fixed;
@@ -40,17 +50,23 @@
     @keyframes fall {
       to { transform: translateY(100vh); }
     }
+    @media (min-width: 768px) { /* masaüstü için biraz büyüt */
+      h1 { font-size: 4rem; }
+      img { max-width: 600px; }
+    }
   </style>
 </head>
 <body>
   <h1>🤍 SENİ ÇOK SEVİYORUM 🤍</h1>
 
-  <img src="senveben1.jpeg" alt="Sen ve Ben 1">
-  <img src="senveben2.jpeg" alt="Sen ve Ben 2">
-  <img src="senveben3.jpeg" alt="Sen ve Ben 3">
-  <img src="senveben4.jpeg" alt="Sen ve Ben 4">
-  <img src="senveben5.jpeg" alt="Sen ve Ben 5">
-  <img src="senveben6.jpeg" alt="Sen ve Ben 6">
+  <div class="gallery">
+    <img src="senveben1.jpeg" alt="Sen ve Ben 1">
+    <img src="senveben2.jpeg" alt="Sen ve Ben 2">
+    <img src="senveben3.jpeg" alt="Sen ve Ben 3">
+    <img src="senveben4.jpeg" alt="Sen ve Ben 4">
+    <img src="senveben5.jpeg" alt="Sen ve Ben 5">
+    <img src="senveben6.jpeg" alt="Sen ve Ben 6">
+  </div>
 
   <script>
     function createHeart() {
